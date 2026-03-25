@@ -11,7 +11,7 @@ pipeline {
                 sh'''
                 cd module
                 terraform init
-                terraform plan --var-file=vars/staging.tfvars
+                terraform plan --vars-file=vars/staging.tfvars
                 '''
             }
         }
