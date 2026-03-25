@@ -11,7 +11,7 @@ pipeline {
                 sh'''
                 cd module
                 terraform init
-                terraform plan    --vars-file=vars/staging.tfvars
+                terraform plan    --var-file=vars/staging.tfvars
                 '''
             }
         }
@@ -26,7 +26,7 @@ pipeline {
                 cd module 
                 ls -l  
                 terraform init
-                terraform apply --auto-approve --vars-file=vars/staging.tfvars
+                terraform apply --auto-approve --var-file=vars/staging.tfvars
                 '''
             }
         }
