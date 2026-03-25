@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+    stages {
+        stage('PULL'){
+            steps{
+                git branch: 'main', url:'https://github.com/chaudharirohini20/cbz-infra.git'
+            }
+        }
+        stage ('Test'){
+            steps{
+                sh '''terraform init
+                terraform plan'''
+            
+            }
+        }
+        stage ('Deploy'){
+            steps{
+                sh 'terraform apply --auto-approve'
+                
+            }
+        }
+        stage('Approve'){
+            steps{
+                input 'wait for approval'
+            }
+        }
+        stage('Destroy'){
+            steps{
+                sh' terraform destroy --auto-approve'
+            }
+        }
+
+        }
+    }
