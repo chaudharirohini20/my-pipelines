@@ -23,7 +23,8 @@ pipeline {
         stage('APPLY'){
             steps{
                 sh'''
-                cd module   
+                cd module 
+                ls -l  
                 terraform init
                 terraform apply --auto-approve --vars-file=vars/staging.tfvars
                 '''
