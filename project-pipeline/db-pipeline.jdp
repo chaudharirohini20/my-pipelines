@@ -25,9 +25,8 @@ pipeline {
                 sh'''
                 
                 terraform init
-                terraform apply -auto-approve --var-file=vars/staging.tfvars
+                terraform apply -auto-approve --vars-file=vars/staging.tfvars
                 '''
-
             }
         }
     }
